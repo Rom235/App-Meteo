@@ -1,0 +1,195 @@
+/* Fond de page et calque de contraste pour garder le contenu lisible. */
+html,
+body {
+	min-height: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+	color: #fff;
+	position: relative;
+	min-height: 100vh;
+	background: #132017;
+}
+
+/* Image de fond pleine page. */
+.page-background {
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	overflow: hidden;
+}
+
+.page-background::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, rgba(10, 20, 10, 0.18), rgba(10, 20, 10, 0.55));
+}
+
+/* Conteneur principal de l'application. */
+.background-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	filter: saturate(1.05) contrast(1.05) brightness(0.9);
+}
+
+/* Panneau principal qui repose sur l'image de fond. */
+.content {
+	width: min(620px, calc(100% - 32px));
+	margin: 32px;
+	position: relative;
+	z-index: 1;
+	padding: 28px 28px 30px;
+	background: linear-gradient(180deg, rgba(18, 28, 18, 0.48), rgba(18, 28, 18, 0.22));
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	border-radius: 22px;
+	backdrop-filter: blur(10px);
+	box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
+}
+
+/* Contraste renforcé sur les textes et les contrôles. */
+h1,
+p,
+button,
+input {
+	text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+h1 {
+	margin: 0 0 12px;
+	font-size: clamp(2rem, 4vw, 3rem);
+	line-height: 1.04;
+}
+
+#location {
+	margin: 0 0 18px;
+	font-size: 1.05rem;
+	color: rgba(255, 255, 255, 0.92);
+}
+
+input {
+	width: min(100%, 320px);
+	padding: 12px 14px;
+	border: 1px solid rgba(255, 255, 255, 0.24);
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.9);
+	color: #162016;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+}
+
+input::placeholder {
+	color: #667063;
+}
+
+button {
+	margin-left: 10px;
+	padding: 12px 16px;
+	border: 0;
+	border-radius: 12px;
+	background: linear-gradient(135deg, #f3c76a, #d78f2f);
+	color: #1b1b14;
+	font-weight: 700;
+	cursor: pointer;
+	box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
+	transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+button:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 16px 30px rgba(0, 0, 0, 0.24);
+	filter: brightness(1.02);
+}
+
+button:active {
+	transform: translateY(0);
+}
+
+input,
+button {
+	font: inherit;
+}
+
+/* Bloc de résultat de la météo courante et des heures à venir. */
+.weather-result {
+	margin-top: 18px;
+	padding: 16px 18px;
+	border-radius: 16px;
+	background: rgba(7, 15, 7, 0.32);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	min-height: 72px;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Cartes des prochaines heures. */
+.weather-result h2 {
+	margin: 0 0 8px;
+	font-size: 1.15rem;
+}
+
+.weather-result p {
+	margin: 4px 0;
+}
+
+/* Mise en grille des prévisions horaires. */
+.hourly-forecast {
+	margin-top: 14px;
+	padding-top: 14px;
+	border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.hourly-forecast h3 {
+	margin: 0 0 12px;
+	font-size: 1rem;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.82);
+}
+
+/* Carte d'une heure précise. */
+.hourly-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+	gap: 10px;
+}
+
+.hour-card {
+	display: grid;
+	gap: 6px;
+	padding: 12px;
+	border-radius: 14px;
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	backdrop-filter: blur(4px);
+}
+
+/* Libellés internes de chaque carte horaire. */
+.hour-time {
+	font-size: 0.9rem;
+	color: rgba(255, 255, 255, 0.82);
+}
+
+.hour-temp {
+	font-size: 1.25rem;
+	line-height: 1;
+}
+
+.hour-label {
+	font-size: 0.88rem;
+	color: rgba(255, 255, 255, 0.86);
+}
+
+.hour-rain {
+	font-size: 0.84rem;
+	color: rgba(255, 236, 180, 0.95);
+	font-weight: 700;
+}
+
+/* Style d'erreur pour les messages de récupération météo. */
+.weather-result.is-error {
+	background: rgba(96, 21, 21, 0.45);
+	border-color: rgba(255, 180, 180, 0.2);
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meteo selon votre localisation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-background">
+        <!-- Crédit image : Photo de Francis Friedlander, Pexels https://www.pexels.com/fr-fr/photo/nature-campagne-agriculture-exterieur-8559665/ -->
+        <img src="https://images.pexels.com/photos/8559665/pexels-photo-8559665.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Paysage de campagne avec champs verdoyants photographié par Francis Friedlander" class="background-image">
+    </div>
+    
+    <main class="content">
+    <h1>Meteo selon votre localisation</h1>
+    <p id="location">Renseignez votre localisation</p>
+    <input type="text" id="city" placeholder="Entrez votre ville">
+    <button id="getWeather">Obtenir la météo</button>
+    <section id="weatherResult" class="weather-result" aria-live="polite"></section>
+    </main>
+</body>
+<script src="index.js"></script>
+</html>
